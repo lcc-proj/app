@@ -1,5 +1,11 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "sdkVersion": "25.0.0",
+    "splash": {
+      "image": "./assets/logo_3.png"
+    },
+    "name": "LCC Change Manager",
+    "icon": "./assets/icon.png",
+    "primaryColor": "#ff8c00"
   }
 }

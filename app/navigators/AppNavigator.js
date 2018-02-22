@@ -9,6 +9,7 @@ import LoginScreen from '../components/LoginScreen';
 import MainScreen from '../components/MainScreen';
 import { addListener } from '../utils/redux';
 import CanvasScreen from "../components/CanvasScreen";
+import ChangeScreen from "../components/ChangeScreen";
 
 
 const MainTabNavigator = TabNavigator(
@@ -50,6 +51,7 @@ const MainTabNavigator = TabNavigator(
 export const AppNavigator = StackNavigator({
   Login: { screen: LoginScreen },
   Main: { screen: MainScreen },
+  Change: { screen: ChangeScreen },
 });
 
 

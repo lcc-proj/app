@@ -12,8 +12,8 @@ export class LoginScreen extends React.Component {
     super();
 
     this.state = {
-      email: '',
-      password: '',
+      email: 'admin',
+      password: 'mudar@123',
       error: '',
       loading: false
     };
@@ -24,7 +24,11 @@ export class LoginScreen extends React.Component {
     console.log(this.state);
     const { email, password } = this.state;
 
-    this.props.mainScreen();
+    if (email === 'admin' && password === 'mudar@123') {
+      this.props.mainScreen();
+    } else {
+      this.onLoginFail("Dados incorretos!")
+    }
 
     // firebase.auth().signInWithEmailAndPassword(email, password)
     //   .then(this.onLoginSuccess.bind(this))
@@ -76,7 +80,7 @@ export class LoginScreen extends React.Component {
       <Card>
         <Form>
           <Item inlineLabel>
-            <Label>E-mail</Label>
+            <Label>Usuário</Label>
             <Input
               keyboard-type='email-address'
               autoCorrect={false}
