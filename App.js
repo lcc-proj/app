@@ -4,6 +4,7 @@ import {Platform, StyleSheet, View} from "react-native";
 import Expo, {Constants} from "expo";
 import configureStore from './app/store/configureStore';
 import LoginForm from './app/components/LoginScreen';
+import AppWithNavigationState from './app/navigators/AppNavigator';
 
 const store = configureStore({});
 
@@ -35,7 +36,7 @@ export default class App extends React.Component{
     return (
 
       <Provider store={store}>
-        <LoginForm />
+        <AppWithNavigationState />
       </Provider>
     );
   }

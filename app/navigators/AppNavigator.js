@@ -2,15 +2,57 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import LoginScreen from '../components/LoginScreen';
 import MainScreen from '../components/MainScreen';
 import { addListener } from '../utils/redux';
+import CanvasScreen from "../components/CanvasScreen";
+
+
+const MainTabNavigator = TabNavigator(
+  {
+    Col1: { screen: CanvasScreen },
+    Col2: { screen: CanvasScreen },
+    Col3: { screen: CanvasScreen },
+    Col4: { screen: CanvasScreen },
+    Col5: { screen: CanvasScreen },
+  },
+  {
+    // navigationOptions: ({ navigation }) => ({
+    //   tabBarIcon: ({ focused, tintColor }) => {
+    //     const { routeName } = navigation.state;
+    //     let iconName;
+    //     if (routeName === 'Home') {
+    //       iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+    //     } else if (routeName === 'Settings') {
+    //       iconName = `ios-options${focused ? '' : '-outline'}`;
+    //     }
+    //
+    //     // You can return any component that you like here! We usually use an
+    //     // icon component from react-native-vector-icons
+    //     return <Ionicons name={iconName} size={25} color={tintColor} />;
+    //   },
+    // }),
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    },
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: true,
+    swipeEnabled: true,
+  }
+);
+
 
 export const AppNavigator = StackNavigator({
   Login: { screen: LoginScreen },
   Main: { screen: MainScreen },
 });
+
+
 
 class AppWithNavigationState extends React.Component {
   static propTypes = {

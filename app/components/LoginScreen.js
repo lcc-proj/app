@@ -5,8 +5,9 @@ import { Card, CardSection } from "./common";
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import renderStatusBar from '../utils/statusbar';
+import nav from "../reducers/navigator";
 
-export default class LoginScreen extends React.Component {
+export class LoginScreen extends React.Component {
   constructor(){
     super();
 
@@ -23,7 +24,7 @@ export default class LoginScreen extends React.Component {
     console.log(this.state);
     const { email, password } = this.state;
 
-    this.setState({error: '', loading: true});
+    this.props.mainScreen();
 
     // firebase.auth().signInWithEmailAndPassword(email, password)
     //   .then(this.onLoginSuccess.bind(this))
@@ -71,10 +72,7 @@ export default class LoginScreen extends React.Component {
   render(){
     return (
       <Container>
-
-        {renderStatusBar()}
         <Content>
-
       <Card>
         <Form>
           <Item inlineLabel>
@@ -109,3 +107,19 @@ const styles = StyleSheet.create({
     color: '#ea0021'
   }
 });
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch({ type: 'Logout' }),
+  mainScreen: () =>
+    dispatch(NavigationActions.navigate({ routeName: 'Main' })),
+});
+
+const mapStateToProps = state => ({
+  isLoggedIn: nav,
+});
+
+LoginScreen.navigationOptions = {
+  title: 'Login'
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
